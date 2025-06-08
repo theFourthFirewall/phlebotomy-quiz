@@ -1,14 +1,16 @@
 <template>
-    <div id="app">
-        <h1 class="text-3xl font-bold text-center mt-10">
-            Phlebotomy Quiz Application
-        </h1>
-        <p class="text-center mt-4 text-gray-600">
-            Laravel + Vue 3 + Tailwind CSS
-        </p>
+    <div id="app" class="min-h-screen bg-gray-50 relative">
+        <!-- Subtle background image -->
+        <div class="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-35 pointer-events-none" 
+             style="background-image: url('/images/background.png')"></div>
+        
+        <!-- Content overlay -->
+        <div class="relative z-10">
+            <router-view />
+        </div>
     </div>
 </template>
 
 <script setup>
-// Vue 3 Composition API with <script setup>
+// Vue 3 SPA with Router
 </script>
