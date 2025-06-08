@@ -15,6 +15,7 @@ This application serves as a professional micro-training tool for phlebotomy sit
 - **Completion Summary**: Final score display with option to retake
 - **Fully Responsive**: Optimized for desktop and mobile devices
 - **Decoupled Architecture**: Separate frontend and backend deployments
+- **Keep-Alive Mechanism**: Automatic server ping to prevent free-tier hibernation
 
 ## Technology Stack
 
@@ -121,17 +122,21 @@ npm run dev
 
 ### Testing the API
 
-With the Laravel server running, you can test the API endpoint:
+With the Laravel server running, you can test the API endpoints:
 
 ```bash
 # Test the questions endpoint
 curl http://127.0.0.1:8000/api/questions
 
+# Test the ping endpoint
+curl http://127.0.0.1:8000/api/ping
+
 # Or visit in your browser
 http://127.0.0.1:8000/api/questions
+http://127.0.0.1:8000/api/ping
 ```
 
-This will return all 15 phlebotomy quiz questions in JSON format.
+The questions endpoint will return all 15 phlebotomy quiz questions in JSON format, while the ping endpoint will return a simple status response.
 
 ## API Endpoints
 
@@ -157,14 +162,38 @@ Returns an array of quiz questions with the following structure:
 ]
 ```
 
+### GET /api/ping
+
+A lightweight endpoint used for health checks and keeping the server alive. Returns a simple status response.
+
+**Response:**
+```json
+{
+  "status": "ok"
+}
+```
+
+**Status Code:** 200 OK
+
+This endpoint is particularly useful for:
+- Health monitoring services
+- Preventing server hibernation on platforms like Render
+- Quick API availability checks
+
 ## Live Demo
 
-**🌐 API Endpoint**: https://phlebotomy-quiz.onrender.com/api/questions
+**🌐 API Endpoints**: 
+- Questions: https://phlebotomy-quiz.onrender.com/api/questions
+- Health Check: https://phlebotomy-quiz.onrender.com/api/ping
 
-The backend API is currently deployed and serving quiz questions. You can test it directly in your browser or with curl:
+The backend API is currently deployed and serving quiz questions. You can test the endpoints directly in your browser or with curl:
 
 ```bash
+# Get quiz questions
 curl https://phlebotomy-quiz.onrender.com/api/questions
+
+# Check API health status
+curl https://phlebotomy-quiz.onrender.com/api/ping
 ```
 
 ## Building for Production

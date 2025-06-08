@@ -85,8 +85,8 @@
     </div>
 
     <!-- Exit Confirmation Modal -->
-    <div v-if="showExitModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
-      <div class="relative bg-white rounded-lg shadow-xl max-w-md mx-auto m-4">
+    <div v-if="showExitModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50 p-4">
+      <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
         <div class="p-6">
           <div class="flex items-center mb-4">
             <svg class="h-6 w-6 text-amber-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

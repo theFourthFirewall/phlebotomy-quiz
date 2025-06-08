@@ -121,6 +121,16 @@ export function useQuiz() {
     return userAnswers.value.find(answer => answer.questionId === questionId)
   }
 
+  // Keep-alive ping function
+  const pingBackend = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/ping`)
+    } catch (err) {
+      // Silently fail - this is just a keep-alive
+      console.debug('Keep-alive ping failed:', err.message)
+    }
+  }
+
   return {
     // State
     questions,
@@ -142,6 +152,7 @@ export function useQuiz() {
     submitAnswer,
     nextQuestion,
     resetQuiz,
-    getAnswerForQuestion
+    getAnswerForQuestion,
+    pingBackend
   }
 }

@@ -12,5 +12,28 @@
 </template>
 
 <script setup>
-// Vue 3 SPA with Router
+import { onMounted, onUnmounted } from 'vue'
+import { useQuiz } from './composables/useQuiz'
+
+const { pingBackend } = useQuiz()
+
+let keepAliveInterval = null
+
+// Set up keep-alive mechanism
+onMounted(() => {
+  // Only enable in production to avoid unnecessary requests during development
+  if (import.meta.env.PROD) {
+    // Ping every 10 minutes (600000 ms)
+    keepAliveInterval = setInterval(pingBackend, 600000)
+    
+    // Initial ping after 30 seconds
+    setTimeout(pingBackend, 30000)
+  }
+})
+
+onUnmounted(() => {
+  if (keepAliveInterval) {
+    clearInterval(keepAliveInterval)
+  }
+})
 </script>

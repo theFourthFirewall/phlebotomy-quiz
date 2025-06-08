@@ -14,6 +14,11 @@
         </p>
       </div>
 
+      <!-- Server Status -->
+      <div class="flex justify-center mt-4">
+        <ServerStatus />
+      </div>
+
       <!-- Content -->
       <div class="mt-8 space-y-6">
         <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
@@ -68,6 +73,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { BeakerIcon } from '@heroicons/vue/24/solid'
+import ServerStatus from '../components/ServerStatus.vue'
 
 const router = useRouter()
 
