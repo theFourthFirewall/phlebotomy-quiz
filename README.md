@@ -203,7 +203,7 @@ The Laravel API is deployed on Render using Docker. The deployment configuration
 ## Deployment Configuration
 
 ### Netlify (Frontend) - ✅ Completed
-- Build Command: `npm run build`
+- Build Command: `npm run build -- --mode netlify`
 - Publish Directory: `dist`
 - Environment Variables: `VITE_API_URL=https://phlebotomy-quiz.onrender.com`
 - **Live URL**: https://dalton-orvis-phlebotomy-quiz.netlify.app
