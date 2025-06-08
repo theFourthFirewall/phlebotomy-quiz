@@ -1,17 +1,14 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 relative">
+    <!-- Background image specific to quiz -->
+    <div class="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-25 pointer-events-none" 
+         style="background-image: url('/images/background2.png')"></div>
+    
+    <!-- Content wrapper -->
+    <div class="relative z-10">
     <div class="max-w-3xl mx-auto">
-      <!-- Header with Exit Button -->
-      <div class="relative text-center mb-8">
-        <!-- Exit Button -->
-        <button
-          v-if="currentQuestion && !isQuizCompleted"
-          @click="showExitModal = true"
-          class="absolute right-0 top-0 px-3 py-1 text-sm text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-        >
-          Exit Quiz
-        </button>
-        
+      <!-- Header -->
+      <div class="text-center mb-8">
         <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
           Phlebotomy Situational Quiz
         </h1>
@@ -75,6 +72,16 @@
           Return to Home
         </button>
       </div>
+      
+      <!-- Exit Quiz Button - Bottom Center -->
+      <div v-if="currentQuestion && !isQuizCompleted" class="text-center mt-8">
+        <button
+          @click="showExitModal = true"
+          class="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+        >
+          Exit Quiz
+        </button>
+      </div>
     </div>
 
     <!-- Exit Confirmation Modal -->
@@ -108,6 +115,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
