@@ -45,7 +45,7 @@ export function useQuiz() {
     error.value = null
     
     try {
-      const response = await fetch('https://phlebotomy-quiz.onrender.com/api/questions')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/questions`)
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
