@@ -22,4 +22,18 @@ export default defineConfig({
             vue: 'vue/dist/vue.esm-bundler.js',
         },
     },
+    build: {
+        rollupOptions: {
+            input: {
+                app: 'resources/js/app.js'
+            },
+            output: {
+                entryFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash].[ext]'
+            }
+        },
+        outDir: 'dist',
+        emptyOutDir: true
+    }
 });
