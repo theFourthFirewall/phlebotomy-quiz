@@ -31,7 +31,7 @@ This application serves as a professional micro-training tool for phlebotomy sit
 - `/api/questions` endpoint serving 15 phlebotomy scenarios
 - CORS configured via Laravel Sanctum for frontend integration
 - Local testing verified - API returns proper JSON structure
-- Ready for deployment to Render
+- **DEPLOYED**: Live API at https://phlebotomy-quiz.onrender.com/api/questions
 
 **🔄 Phase 2: Frontend Vue SPA (Next)**
 - Vue 3 scaffolding in place with basic components
@@ -39,10 +39,10 @@ This application serves as a professional micro-training tool for phlebotomy sit
 - Vite build system configured
 - Awaiting API integration and quiz logic implementation
 
-**⏳ Phase 3: Deployment (Pending)**
-- Backend deployment to Render
+**⏳ Phase 3: Frontend Deployment (Pending)**
 - Frontend deployment to Netlify
 - Cross-origin configuration finalization
+- End-to-end testing
 
 ## Architecture
 
@@ -156,6 +156,16 @@ Returns an array of quiz questions with the following structure:
 ]
 ```
 
+## Live Demo
+
+**🌐 API Endpoint**: https://phlebotomy-quiz.onrender.com/api/questions
+
+The backend API is currently deployed and serving quiz questions. You can test it directly in your browser or with curl:
+
+```bash
+curl https://phlebotomy-quiz.onrender.com/api/questions
+```
+
 ## Building for Production
 
 ### Frontend Build
@@ -165,21 +175,41 @@ npm run build
 
 The built files will be in the `dist` directory, ready for deployment to Netlify.
 
-### Backend Preparation
-1. Configure CORS in `config/cors.php` to allow your production frontend URL
+### Backend Deployment (Completed)
+
+The Laravel API is deployed on Render using Docker. The deployment configuration includes:
+
+- **Platform**: Render (Docker)
+- **Environment**: PHP 8.3 with Apache
+- **Build Process**: Automated via Dockerfile
+- **Live URL**: https://phlebotomy-quiz.onrender.com
+
+**Environment Variables configured on Render:**
+- `APP_ENV=production`
+- `APP_DEBUG=false`
+- `APP_KEY=[generated key]`
+- `APP_URL=https://phlebotomy-quiz.onrender.com`
+- `LOG_CHANNEL=stderr`
+- `SESSION_DRIVER=array`
+- `CACHE_STORE=array`
+- `QUEUE_CONNECTION=sync`
+
+### Frontend Preparation
+1. Configure CORS in Sanctum to allow your production frontend URL
 2. Set up environment variables for production
 3. Deploy to your hosting provider (e.g., Render)
 
 ## Deployment Configuration
 
-### Netlify (Frontend)
+### Netlify (Frontend) - For Phase 2
 - Build Command: `npm run build`
 - Publish Directory: `dist`
-- Environment Variables: `VITE_API_URL=https://your-api-url.onrender.com`
+- Environment Variables: `VITE_API_URL=https://phlebotomy-quiz.onrender.com`
 
-### Render (Backend)
-- Build Command: `composer install`
-- Start Command: `php artisan serve --host 0.0.0.0 --port $PORT`
+### Render (Backend) - ✅ Completed
+- **Deployment Method**: Docker (using included Dockerfile)
+- **Auto-Deploy**: Enabled from GitHub main branch
+- **Current Status**: Live and serving API responses
 
 ## Project Structure
 
